@@ -1,0 +1,51 @@
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        const double CM_PER_INCH = 2.54;
+        double inches = 5;
+        double centimeters = inches * CM_PER_INCH;
+        Console.WriteLine($"{inches} inches is equal to {centimeters} centimeters.");
+    }
+}
+
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        const double CM_PER_INCH = 2.54;
+        double inches = 50;
+        double centimeters = inches * CM_PER_INCH;
+        Console.WriteLine($"{inches} inches is equal to {centimeters} centimeters.");
+    }
+}
+
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        const double CM_PER_INCH = 2.54;
+        double inches = -15;
+        double centimeters = inches * CM_PER_INCH;
+        Console.WriteLine($"{inches} inches is equal to {centimeters} centimeters.");
+    }
+}
+
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        const double CM_PER_INCH = 2.54;
+        double inches = 15994;
+        double centimeters = inches * CM_PER_INCH;
+        Console.WriteLine($"{inches} inches is equal to {centimeters} centimeters.");
+    }
+}
