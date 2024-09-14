@@ -1,0 +1,19 @@
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        const double BASE_RATE = 200.00;
+        const double HOURLY_RATE = 150.00;
+        const double PER_MILE_RATE = 2.00;
+        double hours;
+        double miles;
+        Console.Write("Enter the estimated number of hours: ");
+        hours = Convert.ToDouble(Console.ReadLine());
+        Console.Write("Enter the estimated number of miles: ");
+        miles = Convert.ToDouble(Console.ReadLine());
+        double totalFee = BASE_RATE + (HOURLY_RATE * hours) + (PER_MILE_RATE * miles);
+        Console.WriteLine($"The total moving fee is: ${totalFee}");
+    }
+}
