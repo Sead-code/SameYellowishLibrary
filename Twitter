@@ -1,0 +1,23 @@
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+          Console.WriteLine("Enter your message:");
+                string message = Console.ReadLine();
+
+                // Trimming any extra spaces at the beginning and end, just in case
+                message = message.Trim();
+
+                // Ensure the message length does not exceed 140 characters
+                if (message.Length <= 140)
+                {
+                    Console.WriteLine("Posted");
+                }
+                else
+                {
+                    Console.WriteLine("Rejected");
+                }
+            }
+        }
