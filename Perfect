@@ -1,0 +1,45 @@
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+     {
+            Console.Write("Enter a number to check if it is a perfect number: ");
+            int number;
+
+            // Validate input
+            if (int.TryParse(Console.ReadLine(), out number) && number > 0)
+            {
+                // Check if the number is a perfect number
+                if (IsPerfect(number))
+                {
+                    Console.WriteLine($"{number} is a Perfect Number.");
+                }
+                else
+                {
+                    Console.WriteLine($"{number} is Not A Perfect Number.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Please enter a valid positive integer.");
+            }
+        }
+
+        static bool IsPerfect(int number)
+        {
+            int sumOfDivisors = 0;
+
+            // Find divisors and sum them
+            for (int divisor = 1; divisor < number; divisor++)
+            {
+                if (number % divisor == 0)
+                {
+                    sumOfDivisors += divisor;
+                }
+            }
+
+            // Check if the sum of divisors equals the number
+            return sumOfDivisors == number;
+        }
+    }
