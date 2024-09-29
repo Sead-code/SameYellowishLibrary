@@ -1,0 +1,73 @@
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+     {
+                 // Variables to store sales totals for each salesperson
+                        decimal totalD = 0, totalE = 0, totalF = 0;
+                        decimal grandTotal = 0;
+                        char salesperson;
+                        decimal saleAmount;
+
+                        // Infinite loop until 'Z' or 'z' is entered to quit
+                        while (true)
+                        {
+                            Console.Write("Enter salesperson initial (D, E, F) or Z to quit: ");
+                            salesperson = Char.ToUpper(Console.ReadLine()[0]); // Convert to uppercase for uniformity
+
+                            // Exit the loop if the user enters 'Z'
+                            if (salesperson == 'Z')
+                                break;
+
+                            // Validate the input for salesperson initials
+                            if (salesperson != 'D' && salesperson != 'E' && salesperson != 'F')
+                            {
+                                Console.WriteLine("Error, invalid salesperson selected, please try again.");
+                                continue;
+                            }
+
+                            // Prompt for the sale amount
+                            Console.Write("Enter the sale amount: ");
+                            if (!decimal.TryParse(Console.ReadLine(), out saleAmount))
+                            {
+                                Console.WriteLine("Invalid sale amount. Please enter a valid number.");
+                                continue;
+                            }
+
+                            // Add the sale to the respective salesperson's total
+                            switch (salesperson)
+                            {
+                                case 'D':
+                                    totalD += saleAmount;
+                                    break;
+                                case 'E':
+                                    totalE += saleAmount;
+                                    break;
+                                case 'F':
+                                    totalF += saleAmount;
+                                    break;
+                            }
+
+                            // Add the sale to the grand total
+                            grandTotal += saleAmount;
+                        }
+
+                        // Output the sales summary
+                        Console.WriteLine("\nSales Summary:");
+                        Console.WriteLine($"Total sales by Danielle (D): {totalD:C}");
+                        Console.WriteLine($"Total sales by Edward (E): {totalE:C}");
+                        Console.WriteLine($"Total sales by Francis (F): {totalF:C}");
+                        Console.WriteLine($"Grand Total sales: {grandTotal:C}");
+
+                        // Determine and display the salesperson with the highest total sales
+                        decimal highestSale = Math.Max(totalD, Math.Max(totalE, totalF));
+                        if (highestSale == totalD)
+                            Console.WriteLine("Highest Sale: Danielle (D)");
+                        else if (highestSale == totalE)
+                            Console.WriteLine("Highest Sale: Edward (E)");
+                        else
+                            Console.WriteLine("Highest Sale: Francis (F)");
+                    }
+                }
+    
