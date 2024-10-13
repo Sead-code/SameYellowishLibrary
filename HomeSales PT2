@@ -1,0 +1,54 @@
+using System;
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Store salesperson names and their sales
+        string[] salespeople = { "D", "E", "F" };
+        string[] names = { "Danielle", "Edward", "Francis" };
+        double[] sales = new double[salespeople.Length];
+        double grandTotal = 0;
+        double highestSale = 0;
+        string highestSalesperson = "";
+
+        // Input loop
+        while (true)
+        {
+            Console.Write("Salesperson (D/E/F): ");
+            string input = Console.ReadLine().ToUpper();
+
+            // Check for valid salesperson
+            int index = Array.IndexOf(salespeople, input);
+            if (index == -1)
+            {
+                Console.WriteLine("Error, invalid salesperson selected, please try again.");
+                continue; // Prompt for input again
+            }
+
+            Console.Write("Sale: ");
+            if (!double.TryParse(Console.ReadLine(), out double sale))
+            {
+                Console.WriteLine("Error, invalid sale amount. Please try again.");
+                continue; // Prompt for input again
+            }
+
+            // Store the sale and update totals
+            sales[index] += sale;
+            grandTotal += sale;
+
+            // Check for highest sale
+            if (sales[index] > highestSale)
+            {
+                highestSale = sales[index];
+                highestSalesperson = salespeople[index];
+            }
+
+            // Output the current total sales
+            Console.WriteLine($"Grand Total: ${grandTotal:N0}");
+            Console.WriteLine($"Highest Sale: {highestSalesperson}");
+
+            // Break condition for this example
+            if (grandTotal >= 2872160) break;
+            }
+        }
+    }
