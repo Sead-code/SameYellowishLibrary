@@ -1,0 +1,77 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        const int NUM_TEMPERATURES = 5;
+        double[] temperatures = new double[NUM_TEMPERATURES];
+        double sum = 0;
+        bool isGettingWarmer = true;
+        bool isGettingCooler = true;
+        double prevTemp = 0;
+        bool firstTemp = true;
+
+        for (int i = 0; i < NUM_TEMPERATURES; i++)
+        {
+            double temp;
+            // Input validation: Ensuring the temperature is between -30 and 130
+            do
+            {
+                try
+                {
+                    Console.Write($"Enter temperature {i + 1} (between -30 and 130): ");
+                    temp = double.Parse(Console.ReadLine());
+
+                    if (temp < -30 || temp > 130)
+                    {
+                        throw new Exception($"Temperature {temp} is invalid, please enter a valid temperature between -30 and 130.");
+                    }
+
+                    temperatures[i] = temp; // Valid temperature
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    continue;
+                }
+                break; // Break out of the loop once a valid input is given
+            } while (true);
+
+            sum += temperatures[i];
+
+            // Check if temperatures are getting warmer or cooler
+            if (!firstTemp)
+            {
+                if (temperatures[i] <= prevTemp)
+                    isGettingWarmer = false;
+                if (temperatures[i] >= prevTemp)
+                    isGettingCooler = false;
+            }
+
+            prevTemp = temperatures[i];
+            firstTemp = false;
+        }
+
+        // Display the temperatures entered
+        Console.WriteLine("\n5-day Temperature: " + string.Join(", ", temperatures));
+
+        // Display the message based on the temperature trend
+        if (isGettingWarmer)
+        {
+            Console.WriteLine("Getting warmer");
+        }
+        else if (isGettingCooler)
+        {
+            Console.WriteLine("Getting cooler");
+        }
+        else
+        {
+            Console.WriteLine("It's a mixed bag");
+        }
+
+        // Calculate and display the average temperature
+        double average = sum / NUM_TEMPERATURES;
+        Console.WriteLine($"Average Temperature is {average:F1} degrees");
+    }
+}
