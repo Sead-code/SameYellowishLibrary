@@ -1,0 +1,64 @@
+using System;
+class Program
+{
+    // Method to display the Greenville motto
+    public static void DisplayMotto()
+    {
+        Console.WriteLine("************************************");
+        Console.WriteLine("*  The stars shine in Greenville.  *");
+        Console.WriteLine("************************************");
+    }
+    // Method for Unit Test #2: Calculate revenue and check contestant growth
+    public static void CalculateRevenue()
+    {
+        Console.Write("Enter last year's number of contestants: ");
+        int lastYearContestants = int.Parse(Console.ReadLine());
+        Console.Write("Enter this year's number of contestants: ");
+        int thisYearContestants = int.Parse(Console.ReadLine());
+        // Constants for calculation
+        const int ticketPrice = 25;
+        int expectedRevenue = thisYearContestants * ticketPrice;
+        // Display results
+        Console.WriteLine($"\nLast year's competition had {lastYearContestants} contestants, and this year's has {thisYearContestants} contestants");
+        Console.WriteLine($"Revenue expected this year is ${expectedRevenue}");
+        // Determine if this year's competition is larger
+        bool isBigger = thisYearContestants > lastYearContestants;
+        Console.WriteLine($"It is {(isBigger ? "true" : "false")} that this year's competition is bigger than last year's.");
+        // Redisplay motto as per requirement
+        DisplayMotto();
+        DisplayMenu();
+    }
+    // Method to display the menu
+    public static void DisplayMenu()
+    {
+        Console.WriteLine("Please Enter the following number below from the following menu:");
+        Console.WriteLine("1. CALCULATE Greenville Revenue Year-Over-Year");
+        Console.WriteLine("2. Exit");
+    }
+    // Main method to control the flow
+    static void Main(string[] args)
+    {
+        bool exit = false;
+        // Display motto initially as required by Unit Test #1
+        DisplayMotto();
+        DisplayMenu();
+        while (!exit)
+        {
+            Console.Write("Your choice: ");
+            string choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "1":
+                    CalculateRevenue();  // Unit Test #2 requirements
+                    break;
+                case "2":
+                    Console.WriteLine("Thank you for using the Greenville Revenue App, good-bye!");
+                    exit = true;
+                    break;
+                default:
+                    Console.WriteLine("Invalid choice, please try again.");
+                    break;
+            }
+        }
+    }
+}
