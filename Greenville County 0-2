@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Main {
+      public static void main(String[] args) {
+          Scanner input = new Scanner(System.in);
+          final int ENTRY_FEE = 25; // Entrance fee for each contestant
+
+          // Prompt user for number of contestants
+          System.out.print("Enter the number of contestants for last year: ");
+          int lastYearContestants = input.nextInt();
+
+          System.out.print("Enter the number of contestants for this year: ");
+          int thisYearContestants = input.nextInt();
+
+          // Calculate expected revenue
+          int expectedRevenue = thisYearContestants * ENTRY_FEE;
+          System.out.println("Expected revenue for this year's competition: $" + expectedRevenue);
+
+          // Display appropriate message based on contestant comparison
+          if (thisYearContestants > lastYearContestants * 2) {
+              System.out.println("The competition is more than twice as big this year!");
+          } else if (thisYearContestants > lastYearContestants) {
+              System.out.println("The competition is bigger than ever!");
+          } else {
+              System.out.println("A tighter race this year! Come out and cast your vote!");
+          }
+      }
+      }
